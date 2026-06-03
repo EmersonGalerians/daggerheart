@@ -3,10 +3,28 @@ document.addEventListener('DOMContentLoaded', () => {
         const boxes = Array.from(form.querySelectorAll('input.pv'));
 
         boxes.forEach((box, idx) => {
-            box.addEventListener('click', () => {
-                boxes.forEach((b, i) => {
-                    b.checked = i <= idx;
-                });
+            box.addEventListener('pointerdown', (e) => {
+                e.preventDefault();
+
+                const lastChecked =
+                    boxes.findLastIndex(b => b.checked);
+
+                // se clicou no último ativo -> remove um
+                if (idx === lastChecked) {
+
+                    boxes.forEach((b, i) => {
+                        b.checked = i < idx;
+                    });
+
+                } else {
+
+                    // adiciona até o clicado
+                    boxes.forEach((b, i) => {
+                        b.checked = i <= idx;
+                    });
+                }
+
+                saveForms();
             });
         });
     }
@@ -86,6 +104,29 @@ document.addEventListener('DOMContentLoaded', () => {
                 form.querySelectorAll('textarea').forEach(t => t.value = '');
                 form.querySelectorAll('select').forEach(s => s.selectedIndex = 0);
             }
+        });
+    }
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    // ...existing code (initPVBehavior, clone/delete handlers) ...
+
+    // tema: persistir em localStorage e alternar classe 'dark' no body
+    const themeBtn = document.getElementById('theme-toggle');
+    const body = document.body;
+    const saved = localStorage.getItem('dh-theme');
+    if (saved === 'dark') {
+        body.classList.add('dark');
+        if (themeBtn) themeBtn.textContent = 'Tema: Claro';
+        if (themeBtn) themeBtn.setAttribute('aria-pressed', 'true');
+    }
+
+    if (themeBtn) {
+        themeBtn.addEventListener('click', () => {
+            const isDark = body.classList.toggle('dark');
+            localStorage.setItem('dh-theme', isDark ? 'dark' : 'light');
+            themeBtn.textContent = isDark ? 'Tema: Claro' : 'Tema: Escuro';
+            themeBtn.setAttribute('aria-pressed', isDark ? 'true' : 'false');
         });
     }
 });
