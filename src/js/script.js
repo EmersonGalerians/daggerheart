@@ -1,41 +1,15 @@
 document.addEventListener('DOMContentLoaded', () => {
-    function initPVBehavior(form) {
-        let boxes = Array.from(form.querySelectorAll('input.pv'));
-        if (!boxes.length) return;
+   function initPVBehavior(form) {
+    const boxes = Array.from(form.querySelectorAll('input.pv'));
 
-        function updateUpTo(index) {
-            boxes.forEach((b, i) => b.checked = i <= index);
-        }
-
-        // remove listeners clones (clean slate)
-        boxes.forEach(b => {
-            const clean = b.cloneNode(true);
-            b.parentNode.replaceChild(clean, b);
-        });
-
-        boxes = Array.from(form.querySelectorAll('input.pv'));
-
-        boxes.forEach((box, idx) => {
-            box.addEventListener('change', () => {
-                // se marcou, pinta até aqui
-                if (box.checked) {
-                    updateUpTo(idx);
-                    return;
-                }
-                // se desmarcou, mantém pintura até o último marcado
-                const lastChecked = boxes.map(b => b.checked).lastIndexOf(true);
-                if (lastChecked === -1) boxes.forEach(b => b.checked = false);
-                else updateUpTo(lastChecked);
-            });
-
-            box.addEventListener('keydown', (e) => {
-                if (e.key === ' ' || e.key === 'Enter') {
-                    e.preventDefault();
-                    updateUpTo(idx);
-                }
+    boxes.forEach((box, idx) => {
+        box.addEventListener('click', () => {
+            boxes.forEach((b, i) => {
+                b.checked = i <= idx;
             });
         });
-    }
+    });
+}
 
     // init existing forms
     document.querySelectorAll('.form-container').forEach(f => initPVBehavior(f));
