@@ -1,18 +1,32 @@
 document.addEventListener('DOMContentLoaded', () => {
-   function initPVBehavior(form) {
-    const boxes = Array.from(form.querySelectorAll('input.pv'));
+    function initPVBehavior(form) {
+        const boxes = Array.from(form.querySelectorAll('input.pv'));
 
-    boxes.forEach((box, idx) => {
-        box.addEventListener('click', () => {
-            boxes.forEach((b, i) => {
-                b.checked = i <= idx;
+        boxes.forEach((box, idx) => {
+            box.addEventListener('click', () => {
+                boxes.forEach((b, i) => {
+                    b.checked = i <= idx;
+                });
             });
         });
-    });
-}
+    }
+    function initStressBehavior(form) {
+        const boxes = Array.from(form.querySelectorAll('input.stress'));
+
+        boxes.forEach((box, idx) => {
+            box.addEventListener('click', () => {
+                boxes.forEach((b, i) => {
+                    b.checked = i <= idx;
+                });
+            });
+        });
+    }
 
     // init existing forms
-    document.querySelectorAll('.form-container').forEach(f => initPVBehavior(f));
+    document.querySelectorAll('.form-container').forEach(f => {
+        initPVBehavior(f);
+        initStressBehavior(f);
+    });
 
     // clone form
     const cloneBtn = document.getElementById('clone-form');
@@ -52,6 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // init behavior on clone
             initPVBehavior(clone);
+            initStressBehavior(clone);
         });
     }
 

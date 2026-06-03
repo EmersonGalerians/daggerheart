@@ -9,43 +9,50 @@
 </head>
 
 <body>
-    <form class="form-container">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name"><br><br>
-        <label for="modificador">ataque</label>
-        <input type="text" id="modificador" name="modificador"><br><br>
-        <label for="Limiar">Limiar</label>
-        <input type="text" id="Limiar" name="Limiar"><br><br>
-        <div class="pv-container">
-            <label for="pv">PV:</label>
-            <input class="pv" type="checkbox" id="pv" name="pv">
-            <input class="pv"type="checkbox" id="pv" name="pv">
-            <input class="pv"type="checkbox" id="pv" name="pv">
-            <input class="pv"type="checkbox" id="pv" name="pv">
-            <input class="pv"type="checkbox" id="pv" name="pv">
-            <input class="pv"type="checkbox" id="pv" name="pv">
-            <input class="pv"type="checkbox" id="pv" name="pv">
-            <input class="pv"type="checkbox" id="pv" name="pv">
-            <input class="pv"type="checkbox" id="pv" name="pv">
-            <input class="pv"type="checkbox" id="pv" name="pv">
-        </div><br><br>
-        <div class="stress-container">
-            <label for="pv">stress:</label>
-            <input class="pv" type="checkbox" id="pv" name="pv">
-            <input class="pv"type="checkbox" id="pv" name="pv">
-            <input class="pv"type="checkbox" id="pv" name="pv">
-            <input class="pv"type="checkbox" id="pv" name="pv">
-            <input class="pv"type="checkbox" id="pv" name="pv">
-            <input class="pv"type="checkbox" id="pv" name="pv">
-        </div><br><br>
-        <label for="habilidades">Habilidades</label>
-        <textarea name="habilidades" id="habilidades"></textarea>
+    <section class="form-section">
 
-    </form>
+        <form class="form-container">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name"><br><br>
+            <label for="modificador">ataque</label>
+            <input type="text" id="modificador" name="modificador"><br><br>
+            <input type="select" id="modificador" name="modificador"><br><br>
+            <label for="Limiar">Limiar</label>
+            <div class="damage-row">
+                <input class="damage" type="text" maxlength="1">/
+                <input class="damage" type="text" maxlength="2">
+            </div>
+            <div class="pv-container">
+                <label for="pv">PV:</label>
+                <input class="pv" type="checkbox" id="pv" name="pv">
+                <input class="pv" type="checkbox" id="pv" name="pv">
+                <input class="pv" type="checkbox" id="pv" name="pv">
+                <input class="pv" type="checkbox" id="pv" name="pv">
+                <input class="pv" type="checkbox" id="pv" name="pv">
+                <input class="pv" type="checkbox" id="pv" name="pv">
+                <input class="pv" type="checkbox" id="pv" name="pv">
+                <input class="pv" type="checkbox" id="pv" name="pv">
+                <input class="pv" type="checkbox" id="pv" name="pv">
+                <input class="pv" type="checkbox" id="pv" name="pv">
+            </div><br><br>
+            <div class="stress-container">
+                <label for="stress">stress:</label>
+                <input class="stress" type="checkbox" id="stress" name="stress">
+                <input class="stress" type="checkbox" id="stress" name="stress">
+                <input class="stress" type="checkbox" id="stress" name="stress">
+                <input class="stress" type="checkbox" id="stress" name="stress">
+                <input class="stress" type="checkbox" id="stress" name="stress">
+                <input class="stress" type="checkbox" id="stress" name="stress">
+            </div><br><br>
+            <label for="habilidades">Habilidades</label>
+            <textarea name="habilidades" id="habilidades"></textarea>
 
-    <div style="text-align:center; margin-top:16px;">
-        <button type="button" id="clone-form">Duplicar formulário</button>
-        <button type="button" id="delete-form" style="margin-left:8px;">Excluir formulário</button>
+        </form>
+    </section>
+
+    <div class="button-container">
+        <button type="button" id="clone-form">Adicionar</button>
+        <button type="button" id="delete-form">Excluir</button>
     </div>
     <script src="src/js/script.js"></script>
 </body>

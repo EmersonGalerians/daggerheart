@@ -5,19 +5,39 @@
 }
 
 body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+.form-section {
     font-family: 'Poppins', sans-serif;
     background: #fff;
+    display: flex;
+    flex-direction: row;
+    min-width: 0%;
 }
 
 .form-container {
-    max-width: 400px;
-    margin: 50px auto;
     padding: 20px;
     background: #f9f9f9;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    
+    min-width: 0;
+
 }
+
+.damage-row {
+    display: flex;
+    align-items: center;
+    gap: 0px;
+    width: 20%;
+}
+.damage {
+    display: flex;
+    align-items: center;
+    margin: auto 0;
+}
+
 input[type="text"],
 textarea,
 select {
@@ -32,19 +52,22 @@ select {
     -webkit-appearance: none;
     appearance: none;
 }
+
 .pv-container {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     gap: 5px;
     align-items: center;
-
+    min-width: 0;
 }
+
 .pv {
-    display: inline-block; /* ajustado para inputs serem quadradinhos individuais */
+    display: inline-block;
+    /* ajustado para inputs serem quadradinhos individuais */
     -webkit-appearance: none;
     appearance: none;
-   width: 20px;
+    width: 20px;
     height: 10px;
     border: 2px solid #444;
     border-radius: 6px;
@@ -55,7 +78,67 @@ select {
     margin: 0;
     padding: 0;
 }
+
 input.pv:checked {
-    background: #f3c267; /* cor preenchida */
+    background: #f3c267;
+    /* cor preenchida */
     border-color: #2878be;
+}
+
+.stress {
+    display: inline-block;
+    /* ajustado para inputs serem quadradinhos individuais */
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 10px;
+    border: 2px solid #444;
+    border-radius: 6px;
+    background: #fff;
+    cursor: pointer;
+    transition: background-color 0.12s, border-color 0.12s;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    min-width: 0;
+}
+
+input.stress:checked {
+    background: #f3c267;
+    /* cor preenchida */
+    border-color: #2878be;
+}
+
+.button-container {
+    text-align: center;
+    margin-top: 16px;
+    width: 100%;
+    padding: 0px;
+
+    button {
+        background: #2878be;
+        color: #2b2b2b;
+        border: none;
+        border-radius: 4px;
+        padding: 10px 16px;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+
+    #delete-form {
+        background: #2878be;
+        margin-left: 8px;
+    }
+
+    #delete-form:hover {
+        background: #1f5a8a;
+    }
+
+    #clone-form {
+        background: #f3c267;
+    }
+
+    #clone-form:hover {
+        background: #d9a14c;
+    }
 }
